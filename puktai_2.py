@@ -71,13 +71,7 @@ def callback():
 
     return 'OK'
 
-@handler.add(MessageEvent, message=(TextMessage))
-def handle_text_message(event):
-    if event.message.text == "ขอเมนู":
-        image_path = "https://i.imgur.com/HRV9vrY.jpg"
-        line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
-    else:
-        pass
+
 # Preprocess function for image classification
 preprocess = transforms.Compose([
     transforms.Resize(256),
@@ -142,24 +136,26 @@ def handle_content_message(event):
     
     
     # ไก่ต้มขมิ้น
-    if pred_id == 0:    
-        image_path0 = "https://i.imgur.com/98paZEJ.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path0, preview_image_url=image_path0)])
+    if pred_id == 0:  
+          
+        img1 = "https://i.imgur.com/98paZEJ.jpg"
+        txt = f"ไก่ต้มขมิ้น : แก้ไอ ขับเสมหะ เพิ่มความสดชื่นให้กับร่างกาย"            
+        line_bot_api.reply_message(event.reply_token, [
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt),
+                                            
+                    ])
+                
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
-            if event.message.text == "ขอเมนู":
-                image_path = "https://i.imgur.com/HRV9vrY.jpg"
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
-        
-        
-            elif event.message.text == "วิธีการปรุง":
+            if event.message.text == "วิธีการปรุง":
                 
                 img1 = "https://i.imgur.com/spihkQ4.jpg"
                 img2 = "https://i.imgur.com/FYWqxFQ.jpg"
                 head1 = " STEP 1/3 : ต้มสมุนไพร "          
                 txt1 = f"บุบสมุนไพรให้แหลก"
                 txt2 = f"ต้มสมุนไพรให้มีกลิ่นหอม"
-                
+                    
                 line_bot_api.reply_message(event.reply_token, [
                     TextSendMessage(text=head1),
                     TextSendMessage(text=txt1),
@@ -185,7 +181,7 @@ def handle_content_message(event):
                     ImageSendMessage(original_content_url=img2, preview_image_url=img2),                    
                     ])
                 else:
-                    pass
+                     pass
                 @handler.add(MessageEvent, message=(TextMessage))
                 def handle_text_message(event):
                     if event.message.text == "ขั้นต่อไป":
@@ -213,17 +209,14 @@ def handle_content_message(event):
 
     # เเกงคั่วหอยขม
     if pred_id == 1 :    
-        image_path1 = "https://i.imgur.com/L2OKS5r.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path1, preview_image_url=image_path1)])
+        image_path1 = "https://i.imgur.com/L2OKS5r.jpg"
+        txt1 = f"แกงคั่วหอยขมใบชะพลู : เปลือกและเนื้อหอยมีสรรพคุณช่วยแก้กระษัยต่างๆ เช่น แก้ปวดเมื่อย บำรุงกำลัง บำรุงถุงน้ำดี และโรคทางเดินปัสสาวะอย่างโรคนิ่ว" 
+        txt2 = f"ปริมาณโซเดียมสูง (>600 mg ซึ่งเป็นปริมาณโซเดียมปกติใน 1 จาน)"          
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path1, preview_image_url=image_path1),TextSendMessage(text=txt1),TextSendMessage(text=txt2)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
-            if event.message.text == "ขอเมนู":
-                image_path = "https://i.imgur.com/HRV9vrY.jpg"
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
-                line_bot_api.reply_message(event.reply_token, [
-                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),TextSendMessage(text=txt1)])
-    
-            elif event.message.text == "วิธีการปรุง":
+            
+            if event.message.text == "วิธีการปรุง":
                 
                 img1 = "https://i.imgur.com/zYqXOq5.jpg"
                 img2 = "https://i.imgur.com/Y7aMSXB.jpg"
@@ -298,15 +291,14 @@ def handle_content_message(event):
 
     # ขนมจีนนํ้ายากะทิ    
     if pred_id == 2 :    
-        image_path2 = "https://i.imgur.com/m1ISgOM.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path2, preview_image_url=image_path2)])
+        image_path2 = "https://i.imgur.com/m1ISgOM.jpg"
+        txt1 = f"ขนมจีนน้ำยาปู : ช่วยป้องกันท้องผูก"
+        txt2 = f"ปริมาณโซเดียมสูงมาก  ผู้ป่วยโรคที่เกี่ยวกับความเค็ม ไม่ควรรับประทาน(>>>600 mg ซึ่งเป็นปริมาณโซเดียมปกติใน 1 จาน)"            
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path2, preview_image_url=image_path2),TextSendMessage(text=txt1),TextSendMessage(text=txt2)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
-            if event.message.text == "ขอเมนู":
-                image_path = "https://i.imgur.com/HRV9vrY.jpg"
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
             
-            elif event.message.text == "วิธีการปรุง":
+            if event.message.text == "วิธีการปรุง":
                 
                 head1 = f"STEP 1 : เตรียมเครื่องแกงน้ำยากะทิ"
                 img1 = "https://i.imgur.com/OnG3We3.png"
@@ -368,14 +360,13 @@ def handle_content_message(event):
                     
     ## ไก่กอเเละ        
     if pred_id == 3 :    
-        image_path3 = "https://i.imgur.com/o4Ib06J.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path3, preview_image_url=image_path1)])
+        image_path3 = "https://i.imgur.com/o4Ib06J.jpg"
+        txt1 = f"ไก่กอและ : เป็นอาหารประจำถิ่น “ของดีเมืองเบตง”"
+        txt2 = f"ปริมาณโซเดียมสูงมาก  ผู้ป่วยโรคที่เกี่ยวกับความเค็ม ไม่ควรรับประทาน(>>>600 mg ซึ่งเป็นปริมาณโซเดียมปกติใน 1 จาน)"            
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path3, preview_image_url=image_path3),TextSendMessage(text=txt1),TextSendMessage(text=txt2)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
-            if event.message.text == "ขอเมนู":
-                image_path = "https://i.imgur.com/HRV9vrY.jpg"
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
-            elif event.message.text == "วิธีการปรุง":
+            if event.message.text == "วิธีการปรุง":
                 
                 head1 = f" STEP 1/3 : ทําพริกเเกง "
                 img1 = "https://i.imgur.com/HwweMbL.png"
@@ -436,14 +427,12 @@ def handle_content_message(event):
 
     ## ไก่ทอด    
     if pred_id == 4 :    
-        image_path4 = "https://i.imgur.com/u5NbV4t.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path4, preview_image_url=image_path0)])
+        image_path4 = "https://i.imgur.com/u5NbV4t.jpg"   
+        txt1 = f"ไก่ทอดหาดใหญ่ : เป็นอาหารประจำถิ่น “ของเมืองหาดใหญ่”"
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path4, preview_image_url=image_path4),TextSendMessage(text=txt1)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
-            if event.message.text == "ขอเมนู":
-                image_path = "https://i.imgur.com/HRV9vrY.jpg"
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
-            elif event.message.text == "วิธีการปรุง":
+            if event.message.text == "วิธีการปรุง":
                 
                 txt1 = "1.ล้างไก่ให้สะอาด พักในตะแกรงให้สะเด็ดน้ำ"
                 txt2 = "2.โขลก พริกไทย, ลูกผักชี, และยี่หร่า เข้าด้วยกันให้ละเอียด"
@@ -483,14 +472,12 @@ def handle_content_message(event):
 
     ## ไข่ครอบ       
     if pred_id == 5 :    
-        image_path5 = "https://i.imgur.com/Wpbm0om.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path5, preview_image_url=image_path1)])
+        image_path5 = "https://i.imgur.com/Wpbm0om.jpg" 
+        txt1 = f"ไข่ครอบ : เป็นอาหารประถิ่น “ของชาวประมงพื้นบ้านรอบริมทะเลสาบสงขลา” มีสารต้านอนุมูลอิสระที่ช่วยป้องกันโรคต่างๆ เช่น โรคหัวใจ โรคประสาท ไปจนถึงภาวะสมองเสื่อมหรืออัลไซเมอร์"           
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path5, preview_image_url=image_path5),TextSendMessage(text = txt1)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
-            if event.message.text == "ขอเมนู":
-                image_path = "https://i.imgur.com/HRV9vrY.jpg"
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
-            elif event.message.text == "วิธีการปรุง":
+            if event.message.text == "วิธีการปรุง":
                 
                 head1 = f" STEP 1 : เเยกไข่ "
                 img1 = "https://i.imgur.com/2zgRulv.jpg"
@@ -602,19 +589,18 @@ def handle_content_message(event):
                                             TextSendMessage(text=txt)])    
     ## ข้าวยํา   
     if pred_id == 6 :    
-        image_path6 = "https://i.imgur.com/NjNhU1f.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path6, preview_image_url=image_path0)])
+        image_path6 = "https://i.imgur.com/NjNhU1f.jpg"  
+        txt1 = f"ข้าวยำ : เหมาะสมกับคนที่ต้องการลดน้ำหนัก หรือควบคุมน้ำหนัก ทั้งยังช่วยให้ระบบขับถ่ายดี"          
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path6, preview_image_url=image_path6),TextSendMessage(text=txt1)])
+        
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
-            if event.message.text == "ขอเมนู":
-                image_path = "https://i.imgur.com/HRV9vrY.jpg"
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
-            elif event.message.text == "วิธีการปรุง":
+            if event.message.text == "วิธีการปรุง":
                 
                 head1 = f" STEP 1/3 : หุงข้าวให้เป็นสีฟ้า "
-                img1 = "https://i.imgur.com/HwweMbL.png"
+                img1 = "https://i.imgur.com/HioDlhI.png"
                 txt1 = f"ใส่ดอกอัญชัน"
-                img2 = "https://i.imgur.com/NFbdD60.jpg"
+                img2 = "https://i.imgur.com/awZo1aG.png"
                 txt2 = f"หุงให้สุก"
                 
                 line_bot_api.reply_message(event.reply_token, [
@@ -669,8 +655,9 @@ def handle_content_message(event):
 
     ##  คั่วกลิ้งหมู                         
     if pred_id == 7 :    
-        image_path7 = "https://i.imgur.com/dRbRWYy.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path7, preview_image_url=image_path0)])
+        image_path7 = "https://i.imgur.com/dRbRWYy.jpg"  
+        txt1 = f"คั่วกลิ้งหมู : มีสารต้านอนุมูลอิสระ ป้องกันการเกิดมะเร็งในตับ ช่วยบำรุงตับ"          
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path7, preview_image_url=image_path7),TextSendMessage(text=txt1)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
@@ -681,8 +668,9 @@ def handle_content_message(event):
 
     ##  ใบเหลียงต้มกะทิกุ้งสด      
     if pred_id == 8 :    
-        image_path8 = "https://i.imgur.com/77Mentt.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path8, preview_image_url=image_path1)])
+        image_path8 = "https://i.imgur.com/77Mentt.jpg" 
+        txt1 = f"ใบเหลียงต้มกะทิกุ้งสด : บำรุงกระดูก บำรุงสมอง บำรุงสายตาป้องกันมะเร็ง"           
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path8, preview_image_url=image_path8),TextSendMessage(text=txt1)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
@@ -693,8 +681,9 @@ def handle_content_message(event):
             
     ##  หมูฮ้อง  
     if pred_id == 9 :    
-        image_path9 = "https://i.imgur.com/RD14EaT.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path9, preview_image_url=image_path0)])
+        image_path9 = "https://i.imgur.com/RD14EaT.jpg"
+        txt1 = "หมูฮ้อง : มีความอร่อยมากเพราะเป็นหมูสามชั้น ดังนั้น ผู้ป่วยโรคหัวใจและหลอดเลือด ไม่ควรรับประทานเป็นประจำ"            
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path9, preview_image_url=image_path9),TextSendMessage(text=txt1)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
@@ -705,8 +694,10 @@ def handle_content_message(event):
 
     ##  นํ้าพริกกะปิ      
     if pred_id == 10 :    
-        image_path10 = "https://i.imgur.com/NjNhU1f.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path10, preview_image_url=image_path10)])
+        image_path10 = "https://i.imgur.com/NjNhU1f.jpg" 
+        txt1 = f"น้ำพริกกะปิ : ช่วยให้กระดูก และฟันแข็งแรง ช่วยป้องกันการติดเชื้อ และลดไขมันในเส้นเลือด"
+        txt2 = f"ปริมาณโซเดียมสูงมาก  ผู้ป่วยโรคที่เกี่ยวกับความเค็ม ไม่ควรรับประทาน(>>>600 mg ซึ่งเป็นปริมาณโซเดียมปกติใน 1 จาน)ปริมาณน้ำตาลสูง  ผู้ป่วยโรคเบาหวาน ไม่ควรรับประทาน(>8 g ซึ่งเป็นปริมาณโซเดียมปกติใน 1 จาน)"           
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path10, preview_image_url=image_path10),TextSendMessage(text=txt1),TextSendMessage(text=txt2)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
@@ -718,8 +709,10 @@ def handle_content_message(event):
 
     ##  นํ้าพริกกุ้งเสียบ  
     if pred_id == 11 :    
-        image_path11 = "https://i.imgur.com/77Mentt.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path11, preview_image_url=image_path0)])
+        image_path11 = "https://i.imgur.com/77Mentt.jpg" 
+        txt1 = f"น้ำพริกกุ้งเสียบ : ให้วิตามิน และเบต้าแคโรทีนสูง" 
+        txt2 = f"ปริมาณน้ำตาลสูง  ผู้ป่วยโรคเบาหวาน ไม่ควรรับประทาน(>8 g ซึ่งเป็นปริมาณโซเดียมปกติใน 1 จาน)"          
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path11, preview_image_url=image_path11),TextSendMessage(text=txt1),TextSendMessage(text=txt2)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
@@ -730,8 +723,9 @@ def handle_content_message(event):
 
     ##  ปลากรายทอดขมิ้น      
     if pred_id == 12 :    
-        image_path12 = "https://i.imgur.com/rOwd3kW.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path12, preview_image_url=image_path0)])
+        image_path12 = "https://i.imgur.com/rOwd3kW.jpg"
+        txt1 = f"ปลากรายทอดขมิ้น : เป็นสารต้านอนุมูลอิสระ ฆ่าเชื้อแบคทีเรีย เชื้อรา ช่วยลดการอักเสบ ป้องกันและรักษาโรคกระเพาะอาหาร ขับลม ลดอาการท้องอืดท้องเฟ้อ"            
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path12, preview_image_url=image_path12),TextSendMessage(text=txt1)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
@@ -742,8 +736,9 @@ def handle_content_message(event):
 
     ##  เเกงเหลืองปลากระพง
     if pred_id == 13 :    
-        image_path13 = "https://i.imgur.com/uTNu4sF.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path13, preview_image_url=image_path1)])
+        image_path13 = "https://i.imgur.com/uTNu4sF.jpg" 
+        txt1 = f"แกงเหลืองปลากะพง : ช่วยบำรุงร่างกาย รักษาระบบการย่อยอาหารให้ปกติ"           
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path13, preview_image_url=image_path13),TextSendMessage(text=txt1)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
@@ -754,8 +749,10 @@ def handle_content_message(event):
 
     ##  ใบเหลียงผัดไข่   
     if pred_id == 14 :    
-        image_path14 = "https://i.imgur.com/5KzhmaC.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path14, preview_image_url=image_path0)])
+        image_path14 = "https://i.imgur.com/5KzhmaC.jpg" 
+        txt1 = f"ใบเหลียงผัดไข่ : ช่วยบำรุงสายตา บำรุงผิวพรรณ และมีค่าปริมาณแคลเซียม และฟอสฟอรัสสูง ทำให้ช่วยบำรุงกระดูก และฟันให้แข็งแรง" 
+        txt2 = f"ปริมาณโซเดียมสูงมาก  ผู้ป่วยโรคที่เกี่ยวกับความเค็ม ไม่ควรรับประทาน(>>>600 mg ซึ่งเป็นปริมาณโซเดียมปกติใน 1 จาน)"          
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path14, preview_image_url=image_path14),TextSendMessage(text=txt1),TextSendMessage(text=txt2)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
@@ -766,8 +763,9 @@ def handle_content_message(event):
 
     ##  หมูผัดกะปิ      
     if pred_id == 15 :    
-        image_path15 = "https://i.imgur.com/WAAuoW2.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path15, preview_image_url=image_path1)])
+        image_path15 = "https://i.imgur.com/WAAuoW2.jpg" 
+        txt1 = f"หมูผัดกะปิ : เป็นอาหารประจำถิ่นที่เป็นเอกลักษณ์ของทางใต้"           
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path15, preview_image_url=image_path15),TextSendMessage(text=txt1)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
@@ -779,8 +777,9 @@ def handle_content_message(event):
           
     ##  สะตอผัดกุ้ง  
     if pred_id == 16 :    
-        image_path16= "https://i.imgur.com/P8STLYP.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path16, preview_image_url=image_path0)])
+        image_path16= "https://i.imgur.com/P8STLYP.jpg"
+        txt1 = f"สะตอผัดกุ้ง : ช่วยลดความดันโลหิต ลดน้ำตาลในเลือด ยับยั้งการเจริญเติบโต ของแบคทีเรีย เชื้อรา ช่วยกระตุ้นการบีบตัวของลำไส้ได้อย่างดี"            
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path16, preview_image_url=image_path16),TextSendMessage(text=txt1)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
@@ -791,8 +790,9 @@ def handle_content_message(event):
 
     ##  เเกงไตปลา              
     if pred_id == 17 :    
-        image_path17 = "https://i.imgur.com/oZj6CMy.jpg"            
-        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text=response_text),ImageSendMessage(original_content_url=image_path17, preview_image_url=image_path0)])
+        image_path17 = "https://i.imgur.com/oZj6CMy.jpg" 
+        txt1 = f"แกงไตปลา : ช่วยแก้ท้องอืด รสเผ็ดร้อนของพริกช่วยให้การไหลเวียนโลหิตดีขึ้น มีไขมันจากปลาซึ่งเป็นไขมันดี"           
+        line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path17, preview_image_url=image_path17),TextSendMessage(text=txt1)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
@@ -803,13 +803,7 @@ def handle_content_message(event):
        
              
 
-@handler.add(MessageEvent, message=(TextMessage))
-def handle_text_message(event):
-    if event.message.text == "ขอเมนู":
-        image_path = "https://i.imgur.com/HRV9vrY.jpg"
-        line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
-    else:
-        pass
+
 @app.route('/static/<path:path>')
 def send_static_content(path):
     return send_from_directory('static', path)
