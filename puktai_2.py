@@ -661,10 +661,94 @@ def handle_content_message(event):
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
-                image_path = ""
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
+                
+                head1 = f" STEP 1/3 : ผัดพริกเเกง "
+                img1 = "https://i.imgur.com/T0DWJtS.png"
+                txt1 = f"ใส่พริกเเกงลงไปเเล้วผัดให้หอม"
+                
+                txt2 = f"ตั้งกระทะโดยใช้ไฟกลาง พอกระทะร้อนใส่น้ำมันลงไปตามด้วยพริกแกงคั่วกลิ้ง ผัดให้มีกลิ่นหอม"
+                
+                line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt2),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt1)
+                                        
+                    ])
             else:
                 pass
+            @handler.add(MessageEvent, message=(TextMessage))
+            def handle_text_message(event):
+                if event.message.text == "ขั้นต่อไป":
+                    head1 = " STEP 2/3 : ใส่หมูสับ + ปรุงรส "
+                    img1 = "https://i.imgur.com/brprJ7k.png"
+                    img2 = "https://i.imgur.com/RjGPTCE.png"
+                    txt1 = f"ใส่เนื้อหมูลงไป"
+                    txt2 = f"ปรุงรสด้วยเกลือเเละนํ้าปลา"
+                    line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt1),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt2),
+                    ImageSendMessage(original_content_url=img2, preview_image_url=img2)                    
+                    ])
+                else:
+                    pass
+                @handler.add(MessageEvent, message=(TextMessage))
+                def handle_text_message(event):
+                    if event.message.text == "ขั้นต่อไป":
+                        head1 = f" STEP  2/3 : ใส่หมูสับ + ปรุงรส "
+                        img1 = "https://i.imgur.com/nTDTJnb.png"
+                        img2 = "https://i.imgur.com/fAQpNj3.png"
+                        txt1 = f"ปรุงรส"
+                        txt2 = f"เพิ่มความหอมด้วยใบมะกรูด"
+                        line_bot_api.reply_message(event.reply_token, [
+                        TextSendMessage(text=head1), 
+                        TextSendMessage(text=txt1),   
+                        ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                        TextSendMessage(text=txt2), 
+                        ImageSendMessage(original_content_url=img2, preview_image_url=img2)                 
+                        ])
+                    else:
+                        pass
+                    @handler.add(MessageEvent, message=(TextMessage))
+                    def handle_text_message(event):
+                        if event.message.text == "ขั้นต่อไป":
+                            head1 = f" STEP  2/3 : ใส่หมูสับ + ปรุงรส "
+                            img1 = "https://i.imgur.com/nTDTJnb.png"
+                            img2 = "https://i.imgur.com/fAQpNj3.png"
+                            txt1 = f"เพิ่มสีสันด้วยพริกชี้ฟ้าเเดง"
+                            txt2 = f"ผัดให้เข้ากัน เเค่นี้ก็พร้อมทานเเล้ว"
+                            line_bot_api.reply_message(event.reply_token, [
+                            TextSendMessage(text=head1), 
+                            TextSendMessage(text=txt1),   
+                            ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                            TextSendMessage(text=txt2), 
+                            ImageSendMessage(original_content_url=img2, preview_image_url=img2)                 
+                            ])
+                        else:
+                            pass
+                        @handler.add(MessageEvent, message=(TextMessage))
+                        def handle_text_message(event):
+                            if event.message.text == "ขั้นต่อไป":
+                                head1 = f" STEP  3/3 : จัดเสิร์ฟ "
+                                img1 = "https://i.imgur.com/nTDTJnb.png"
+                                
+                                txt1 = f"นำคั่วกลิ้งหมูที่สุกแล้วจัดเสิร์ฟใส่จาน ตกแต่งด้วยใบโหระพา พริกชี้ฟ้าแดงซอย และใบมะกรูดซอย กินกับผักเครื่องเคียงตามชอบได้เลยครับ"
+                                
+                                line_bot_api.reply_message(event.reply_token, [
+                                TextSendMessage(text=head1), 
+                                TextSendMessage(text=txt1),   
+                                ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                                ])
+                            else:
+                                pass
+                            @handler.add(MessageEvent, message=(TextMessage))
+                            def handle_text_message(event): 
+                                if event.message.text == "ขั้นต่อไป":
+                                    txt = "ไม่มีขั้นต่อไปเเล้วครับ" 
+                                    line_bot_api.reply_message(event.reply_token, [
+                                        TextSendMessage(text=txt)])
 
     ##  ใบเหลียงต้มกะทิกุ้งสด      
     if pred_id == 8 :    
@@ -674,10 +758,75 @@ def handle_content_message(event):
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
-                image_path = ""
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
+                
+                head1 = f" STEP 1/3 : เตรียมเครื่องเเกง "
+                txt1 = f"นำใบเหลียงที่เตรียมไว้ล้างน้ำให้สะอาด สะบัดให้สะเด็ดน้ำ เลือกเอาใบอ่อน ๆ ไม่แก่ จะใช้มีดหรือกรรไรตัดให้เล็กลงก็ได้"
+                txt2 = f"นำกุ้งสดล้างน้ำให้สะอาด จากนั้นปอกเปลือกออก แล้วผ่าหลังดึงเส้นดำออก ล้างน้ำอีกครั้งพักไว้"
+                
+                line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt1),
+                    TextSendMessage(text=txt2)
+                    ])
             else:
                 pass
+            @handler.add(MessageEvent, message=(TextMessage))
+            def handle_text_message(event):
+                if event.message.text == "ขั้นต่อไป":
+                    head1 = " STEP 2/3 : โขลกส่วนผสม "
+                    img1 = "https://i.imgur.com/EAKUyOD.png"
+                    txt1 = f"นำหอมแดง กะปิ และพริกไทยขาวมาโขลกให้ละเอียด"
+                    txt2 = f"ทำการโขลก หอมแดง กะปิ และพริกไทยขาว"
+                    line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt1),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt2),
+                                       
+                    ])
+                else:
+                    pass
+                @handler.add(MessageEvent, message=(TextMessage))
+                def handle_text_message(event):
+                    if event.message.text == "ขั้นต่อไป":
+                        head1 = f" STEP  3/3 : ลงมือเเกง "
+                        img1 = "https://i.imgur.com/gBtdlob.png"
+                        img2 = "https://i.imgur.com/5HulU8x.png"
+                        txt1 = f"ใส่เครื่องเเกงที่โขลกไว้"
+                        txt2 = f"ตามด้วยหางกะทิ"
+                        
+                        line_bot_api.reply_message(event.reply_token, [
+                        TextSendMessage(text=head1), 
+                        TextSendMessage(text=txt1),   
+                        ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                        TextSendMessage(text=txt2), 
+                        ImageSendMessage(original_content_url=img2, preview_image_url=img2)                 
+                        ])
+                    else:
+                        pass
+                    @handler.add(MessageEvent, message=(TextMessage))
+                    def handle_text_message(event):
+                        if event.message.text == "ขั้นต่อไป":
+                            head1 = f" STEP  3/3 : ลงมือเเกง "
+                            img1 = "https://i.imgur.com/bUYsm3C.png"
+                            img2 = "https://i.imgur.com/6WKN23b.png"
+                            txt1 = f"ใส่ใบเหลียง"
+                            txt2 = f"นำใบเหลียงต้มกะทิตักใส่ชาม พร้อมเสิร์ฟได้เลย"
+                            line_bot_api.reply_message(event.reply_token, [
+                            TextSendMessage(text=head1), 
+                            TextSendMessage(text=txt1),   
+                            ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                            TextSendMessage(text=txt2), 
+                            ImageSendMessage(original_content_url=img2, preview_image_url=img2)                 
+                            ])
+                        else:
+                            pass
+                        @handler.add(MessageEvent, message=(TextMessage))
+                        def handle_text_message(event): 
+                            if event.message.text == "ขั้นต่อไป":
+                                txt = "ไม่มีขั้นต่อไปเเล้วครับ" 
+                                line_bot_api.reply_message(event.reply_token, [
+                                    TextSendMessage(text=txt)])
             
     ##  หมูฮ้อง  
     if pred_id == 9 :    
@@ -687,10 +836,70 @@ def handle_content_message(event):
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
-                image_path = ""
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
+                
+                head1 = f" STEP 1/3 : คั่วอบเชย โป๊ยกั๊ก พริกไทยดำ-ขาว "
+                img1 = "https://i.imgur.com/tKVQ9y8.png"
+                txt1 = f"โดยการให้มีกลิ่นหอม แล้วนำมาตำให้ละเอียด ใส่รากผักชี กระเทียม และเกลือนิดหน่อย ลงไปตำให้เข้ากันสำหรับหมักหมูสามชั้น"
+                txt2 = f"คั่วอบเชย โป๊ยกั๊ก พริกไทยดำ-ขาว"
+                
+                line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt1),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt2)
+                    ])
             else:
                 pass
+            @handler.add(MessageEvent, message=(TextMessage))
+            def handle_text_message(event):
+                if event.message.text == "ขั้นต่อไป":
+                    head1 = " STEP 2/3 : หมูสามชั้นหั่นชิ้นหนาประมาณ 2นิ้ว "
+                    img1 = "https://i.imgur.com/SVNO56L.png"
+                    txt1 = f"หมักให้เข้าเนื้อด้วยเครื่องที่ตำไว้ ปรุงรสด้วยซีอิ้วขาว ซีอิ้วดำ น้ำตาลทรายแดง น้ำตาลปิ๊ป และเกลือเล็กน้อย"
+                    txt2 = f"หมักหมูให้เข้ากัน"
+                    line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt1),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt2),
+                                       
+                    ])
+                else:
+                    pass
+                @handler.add(MessageEvent, message=(TextMessage))
+                def handle_text_message(event):
+                    if event.message.text == "ขั้นต่อไป":
+                        head1 = f" STEP  3/3 : ผัดหมูสามชั้นที่หมักไว้ "
+                        img1 = "https://i.imgur.com/jxLahAx.png"
+                        txt1 = f"ผัดหมูสามชั้นที่หมักไว้ในกระทะให้พอผิวด้านนอกสุกนิดหน่อย.. แล้วเติมน้ำลงไปใส่ซุปหมูก้อนคนอร์เพิ่มความหอมกลมกล่อม..เคี่ยวให้หมูเปื่อยนุ่มดีใช้เวลาประมาณ 1ชม. น้ำจะงวดลงเข้าเนื้อหมูเข้มข้น..หอมหวลชวนกินเป็นอันเสร็จ"
+                        txt2 = f"ผัดให้เข้ากัน"
+                        
+                        line_bot_api.reply_message(event.reply_token, [
+                        TextSendMessage(text=head1), 
+                        TextSendMessage(text=txt1),   
+                        ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                        TextSendMessage(text=txt2), 
+                                         
+                        ])
+                    else:
+                        pass
+                    @handler.add(MessageEvent, message=(TextMessage))
+                    def handle_text_message(event):
+                        if event.message.text == "ขั้นต่อไป":
+                            img1 = "https://i.imgur.com/rdx7ROx.png"
+                            txt1 = f"หมูฮ้อง หอม ๆ รสชาติเค็มนำหวาน หอมกลิ่นเครื่องเทศต่าง ๆ เปื่อยนุ่มกำลังดี"
+                            line_bot_api.reply_message(event.reply_token, [
+                            ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                            TextSendMessage(text=txt1) 
+                            ])
+                        else:
+                            pass
+                        @handler.add(MessageEvent, message=(TextMessage))
+                        def handle_text_message(event): 
+                            if event.message.text == "ขั้นต่อไป":
+                                txt = "ไม่มีขั้นต่อไปเเล้วครับ" 
+                                line_bot_api.reply_message(event.reply_token, [
+                                    TextSendMessage(text=txt)])
 
     ##  นํ้าพริกกะปิ      
     if pred_id == 10 :    
@@ -701,10 +910,46 @@ def handle_content_message(event):
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
-                image_path = ""
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
+                
+                head1 = f" STEP 1/2 : โขลกเครื่องให้ละเอียด "
+                img1 = "https://i.imgur.com/A524lfm.png"
+                img2 = "https://i.imgur.com/aPwo8KW.png"
+                txt1 = f"ใส่พริกขี้หนู พริกแดง กระเทียม น้ำตาลทราย ลงไปตำ"
+                txt2 = f"ใส่กะปิตามลงไป ตำให้เข้ากัน"
+                
+                line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt1),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt2),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1)
+                    ])
             else:
-                pass    
+                pass
+            @handler.add(MessageEvent, message=(TextMessage))
+            def handle_text_message(event):
+                if event.message.text == "ขั้นต่อไป":
+                    head1 = "STEP 2/2 : ปรุงรสน้ำพริก "
+                    img1 = "https://i.imgur.com/rNSPMSV.png"
+                    img2 = "https://i.imgur.com/zHjYGuF.png"
+                    txt1 = f"ปรุงรสด้วยน้ำปลาและน้ำมะนาว"
+                    txt2 = f"จัดเสิร์ฟได้เลย"
+                    line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt1),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt2),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1)
+                    ])
+                else:
+                    pass
+                
+                @handler.add(MessageEvent, message=(TextMessage))
+                def handle_text_message(event): 
+                    if event.message.text == "ขั้นต่อไป":
+                        txt = "ไม่มีขั้นต่อไปเเล้วครับ" 
+                        line_bot_api.reply_message(event.reply_token, [
+                            TextSendMessage(text=txt)])    
 
 
     ##  นํ้าพริกกุ้งเสียบ  
@@ -716,10 +961,64 @@ def handle_content_message(event):
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
-                image_path = ""
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
+                
+                head1 = f" STEP 1/3 : ตำ "
+                img1 = "https://i.imgur.com/SYwmhfC.png"
+                img2 = "https://i.imgur.com/jtE7rQ8.png"
+                txt1 = f"ใส่หอมแดง กระเทียม และพริกขี้หนู ลงในครก"
+                txt2 = f"ตำให้ละเอียดเข้ากัน"
+                
+                line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt1),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt2),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img2)
+                    ])
             else:
                 pass
+            @handler.add(MessageEvent, message=(TextMessage))
+            def handle_text_message(event):
+                if event.message.text == "ขั้นต่อไป":
+                    head1 = " STEP 2/3 : คลุก "
+                    img1 = "https://i.imgur.com/sloK9VV.png"
+                    img2 = "https://i.imgur.com/xvzUIN2.png"
+                    txt1 = f"คั่วกุ้งเสียบด้วยไฟกลาง"
+                    txt2 = f"คลุกให้เข้ากัน"
+                    line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt1),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt2),
+                    ImageSendMessage(original_content_url=img2, preview_image_url=img2),
+                    ])
+                else:
+                    pass
+                @handler.add(MessageEvent, message=(TextMessage))
+                def handle_text_message(event):
+                    if event.message.text == "ขั้นต่อไป":
+                        head1 = f" STEP  3/3 : จัดเสิร์ฟ "
+                        img1 = "https://i.imgur.com/UPORtkp.png"
+                        img2 = "https://i.imgur.com/H9mW2w9.png"
+                        txt1 = f"ตักขึ้นใส่ชาม"
+                        txt2 = f"เสิร์ฟกับผักสดตามชอบ"
+                        
+                        line_bot_api.reply_message(event.reply_token, [
+                        TextSendMessage(text=head1),
+                        TextSendMessage(text=txt1),
+                        ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                        TextSendMessage(text=txt2),
+                        ImageSendMessage(original_content_url=img2, preview_image_url=img2)          
+                        ])
+                    else:
+                        pass
+                    
+                    @handler.add(MessageEvent, message=(TextMessage))
+                    def handle_text_message(event): 
+                        if event.message.text == "ขั้นต่อไป":
+                            txt = "ไม่มีขั้นต่อไปเเล้วครับ" 
+                            line_bot_api.reply_message(event.reply_token, [
+                                TextSendMessage(text=txt)])
 
     ##  ปลากรายทอดขมิ้น      
     if pred_id == 12 :    
@@ -728,12 +1027,28 @@ def handle_content_message(event):
         line_bot_api.reply_message(event.reply_token, [ImageSendMessage(original_content_url=image_path12, preview_image_url=image_path12),TextSendMessage(text=txt1)])
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
-            if event.message.text == "วิธีการปรุง":
-                image_path = ""
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
+            if event.message.text == "ขั้นต่อไป":
+                
+                txt1 = f"1. ตำกระเทียมกับขมิ้นให้พอแหลกครับ (ขมิ้นจะมียางหน่อยๆ เวลาตำแล้วจะรู้สึกว่าตำยากนิดๆ ครับ แล้วครกจะเหลืองติดสีไปซักพักเลยครับ)"
+                txt2 = f"2.เอาเครื่องทำตำแล้วกับเกลือเคล้ากับตัวปลาให้ทั่ว ทั้งข้างนอก ข้างใน แล้วพักไว้ 15 นาที"
+                txt3 = f"3. นำลงทอดในกระทะใส่น้ำมันมากหน่อยตั้งไฟให้ร้อนจัด"
+                txt4 = f"4. ใช้มือรูดเครื่องที่หมักออกจากตัวปลาบ้าง (ถ้าใส่ลงไปพร้อมกับเครื่องหมักจะไหม้ก่อนปลาสุกครับ) นำลงทอดจะสุก เหลือง ถ้าชอบกินเครื่องหมักทอดให้นำเครื่องหมักลงลงทอดจนเหลืองกรอบอีกครั้ง"
+                line_bot_api.reply_message(event.reply_token, [
+                TextSendMessage(text=txt1),
+                TextSendMessage(text=txt2),
+                TextSendMessage(text=txt3),
+                TextSendMessage(text=txt4)
+
+                    ])
             else:
                 pass
-
+            @handler.add(MessageEvent, message=(TextMessage))
+            def handle_text_message(event): 
+                if event.message.text == "ขั้นต่อไป":
+                    txt = "ไม่มีขั้นต่อไปเเล้วครับ" 
+                    line_bot_api.reply_message(event.reply_token, [
+                        TextSendMessage(text=txt)])
+            
     ##  เเกงเหลืองปลากระพง
     if pred_id == 13 :    
         image_path13 = "https://i.imgur.com/uTNu4sF.jpg" 
@@ -742,10 +1057,74 @@ def handle_content_message(event):
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
-                image_path = ""
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
+                
+                head1 = f" STEP 1/3 : เตรียมวัตถุดิบ "
+                img1 = "https://i.imgur.com/LebAN37.png"
+                img2 = "https://i.imgur.com/MxE1TLw.png"
+                txt1 = f"ปอกเปลือกสับปะรด"
+                txt2 = f"ปอกตาออก"
+                
+                line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt1),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt2),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img2)
+                    ])
             else:
                 pass
+            @handler.add(MessageEvent, message=(TextMessage))
+            def handle_text_message(event):
+                if event.message.text == "ขั้นต่อไป":
+                    head1 = " STEP 2/3 : ต้ม "
+                    img1 = "https://i.imgur.com/swe0oMF.png"
+                    img2 = "https://i.imgur.com/b4wuIpa.png"
+                    txt1 = f"ใส่พริกแกงเหลือง"
+                    txt2 = f"ใส่เนื้อปลากะพง"
+                    line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt1),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt2),
+                    ImageSendMessage(original_content_url=img2, preview_image_url=img2),
+                    ])
+                else:
+                    pass
+                @handler.add(MessageEvent, message=(TextMessage))
+                def handle_text_message(event):
+                    if event.message.text == "ขั้นต่อไป":
+                        head1 = f" STEP  2/3 : ต้ม "
+                        img1 = "https://i.imgur.com/GB74C8e.png"
+                        img2 = "https://i.imgur.com/5BzuOuK.png"
+                        txt1 = f"ใส่สับปะรด"
+                        txt2 = f"ปรุงรสด้วยน้ำปลา"
+                        
+                        line_bot_api.reply_message(event.reply_token, [
+                        TextSendMessage(text=head1),
+                        TextSendMessage(text=txt1),
+                        ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                        TextSendMessage(text=txt2),
+                        ImageSendMessage(original_content_url=img2, preview_image_url=img2)          
+                        ])
+                    else:
+                        pass
+                    @handler.add(MessageEvent, message=(TextMessage))
+                    def handle_text_message(event):
+                        if event.message.text == "ขั้นต่อไป":
+                            img1 = "https://i.imgur.com/OPapZHS.png"
+                            txt1 = f"พร้อมเสิร์ฟเเล้วครับ"
+                            line_bot_api.reply_message(event.reply_token, [
+                            ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                            TextSendMessage(text=txt1) 
+                            ])
+                        else:
+                            pass
+                        @handler.add(MessageEvent, message=(TextMessage))
+                        def handle_text_message(event): 
+                            if event.message.text == "ขั้นต่อไป":
+                                txt = "ไม่มีขั้นต่อไปเเล้วครับ" 
+                                line_bot_api.reply_message(event.reply_token, [
+                                    TextSendMessage(text=txt)])
 
     ##  ใบเหลียงผัดไข่   
     if pred_id == 14 :    
@@ -756,11 +1135,46 @@ def handle_content_message(event):
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
-                image_path = ""
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
+                head1 = f" STEP 1/3 : เตรียมใบเหลียงให้เรียบร้อย "
+                txt1 = f"เด็ดใบเหลียงเลือกใบที่อ่อนๆ ไม่แข็งกระด้าง ใบที่ใหญ่ให้ฉีกออกแต่ไม่ต้องเล็กมาก ล้างน้ำให้สะอาดพักสะเด็ดน้ำ"
+                line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt1),
+                    ])
             else:
                 pass
-
+            
+            @handler.add(MessageEvent, message=(TextMessage))
+            def handle_text_message(event):
+                if event.message.text == "ขั้นต่อไป":
+                    head1 = f" STEP 2/3 : นําลงไปผัด "
+                    txt1 = f"นำน้ำมันใส่กะทะตั้งไฟให้ร้อน เจียวกระเทียมให้หอม ใส่ไข่ไก่ที่ตีไว้ผัดพอไข่เป็นวุ้น"
+                    line_bot_api.reply_message(event.reply_token, [
+                        TextSendMessage(text=head1),
+                        TextSendMessage(text=txt1),
+                        ])
+                else:
+                    pass
+                @handler.add(MessageEvent, message=(TextMessage))
+                def handle_text_message(event):
+                    if event.message.text == "ขั้นต่อไป":
+                        head1 = f" STEP 3/3 : จัดเสิร์ฟ "
+                        txt1 = f"ใส่ใบเหลียงตามด้วยเครื่องปรุงผัดให้ใบเหลียงพอสลบ ตัดใส่จานทานได้ทันที ใครจะกินกับน้ำพริกกะปิก็เข้ากัน"
+                        img1 = "https://i.imgur.com/DorURYU.png"
+                        line_bot_api.reply_message(event.reply_token, [
+                            TextSendMessage(text=head1),
+                            ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                            TextSendMessage(text=txt1),
+                            ])
+                    else:
+                        pass
+                    @handler.add(MessageEvent, message=(TextMessage))
+                    def handle_text_message(event): 
+                        if event.message.text == "ขั้นต่อไป":
+                            txt = "ไม่มีขั้นต่อไปเเล้วครับ" 
+                            line_bot_api.reply_message(event.reply_token, [
+                                TextSendMessage(text=txt)])
+                            
     ##  หมูผัดกะปิ      
     if pred_id == 15 :    
         image_path15 = "https://i.imgur.com/WAAuoW2.jpg" 
@@ -769,10 +1183,64 @@ def handle_content_message(event):
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
-                image_path = ""
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
+                
+                head1 = f" STEP 1/3 : โขลกพริกกระเทียม "
+                img1 = "https://i.imgur.com/3phmDMk.png"
+                img2 = "https://i.imgur.com/XjkzHtn.jpg"
+                txt1 = f"ใส่กระเทียมลงไปโขลก"
+                txt2 = f"โขลกพริก กระเทียม หอมแดงซอย และกะปิจนเข้ากัน"
+                
+                line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt1),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt2),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img2)
+                    ])
             else:
-                pass  
+                pass
+            @handler.add(MessageEvent, message=(TextMessage))
+            def handle_text_message(event):
+                if event.message.text == "ขั้นต่อไป":
+                    head1 = " STEP 2/3 : ตั้งกะทะ ผัดส่วนผสม "
+                    img1 = "https://i.imgur.com/XJzwCLz.jpg"
+                    img2 = "https://i.imgur.com/EU1P4j0.png"
+                    txt1 = f"นำส่วนผสมที่โขลกไว้ลงไปผัด"
+                    txt2 = f"เติมน้ำเปล่าให้มีน้ำขลุกขลิก"
+                    line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt1),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt2),
+                    ImageSendMessage(original_content_url=img2, preview_image_url=img2),
+                    ])
+                else:
+                    pass
+                @handler.add(MessageEvent, message=(TextMessage))
+                def handle_text_message(event):
+                    if event.message.text == "ขั้นต่อไป":
+                        head1 = f" STEP  3/3 : ปรุงรส "
+                        img1 = "https://i.imgur.com/IxziCRq.png"
+                        img2 = "https://i.imgur.com/91dxz3a.png"
+                        txt1 = f"ใส่ใบมะกรูดตามลงไป"
+                        txt2 = f"จัดเสิร์ฟได้เลย"
+                        
+                        line_bot_api.reply_message(event.reply_token, [
+                        TextSendMessage(text=head1),
+                        TextSendMessage(text=txt1),
+                        ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                        TextSendMessage(text=txt2),
+                        ImageSendMessage(original_content_url=img2, preview_image_url=img2)          
+                        ])
+                    else:
+                        pass
+                    
+                    @handler.add(MessageEvent, message=(TextMessage))
+                    def handle_text_message(event): 
+                        if event.message.text == "ขั้นต่อไป":
+                            txt = "ไม่มีขั้นต่อไปเเล้วครับ" 
+                            line_bot_api.reply_message(event.reply_token, [
+                                TextSendMessage(text=txt)])  
 
           
     ##  สะตอผัดกุ้ง  
@@ -783,8 +1251,22 @@ def handle_content_message(event):
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
-                image_path = ""
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
+                
+                
+                
+                
+                txt1 = f"ทำพริกแกงสำหรับผัดสะตอ โดยการใส่กระเทียมลงไปในครก ตามด้วยพริกขี้หนู กะปิ และน้ำตาลปี๊บ โขลกให้ละเอียด ตักใส่ถ้วยพักไว้"
+                txt2 = f"นำกระทะตั้งไฟ ความร้อนปานกลาง เทน้ำมันพืชลงไป รอน้ำมันร้อน ใส่พริกแกงที่เตรียมไว้ ผัดจนหอม จากนั้นใส่กุ้งลงไปผัดจนสุก"
+                txt3 = f"ใส่สะตอแกะผ่าครึ่ง ผัดจนสุก จากนั้นปรุงรสด้วยน้ำปลา และมะนาวค่ะ ผัดต่อให้เข้ากันดี"
+                txt4 = f"พร้อมเสิร์ฟเเล้วครับ"
+                img1 = "https://i.imgur.com/B8R6ikw.png"
+                line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=txt1),
+                    TextSendMessage(text=txt2),
+                    TextSendMessage(text=txt3),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt4)
+                    ])
             else:
                 pass 
 
@@ -796,10 +1278,64 @@ def handle_content_message(event):
         @handler.add(MessageEvent, message=(TextMessage))
         def handle_text_message(event):
             if event.message.text == "วิธีการปรุง":
-                image_path = ""
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url=image_path, preview_image_url=image_path))
+                
+                head1 = f" STEP 1/3 : ตำพริกแกงไตปลา "
+                img1 = "https://i.imgur.com/YqEhKuz.png"
+                img2 = "https://i.imgur.com/LUA8bYk.png"
+                txt1 = f"โขลกพริกแห้งให้ละเอียด"
+                txt2 = f"ใส่พริกไทยดำที่โขลกแยกไว้"
+                
+                line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt1),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt2),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img2)
+                    ])
             else:
                 pass
+            @handler.add(MessageEvent, message=(TextMessage))
+            def handle_text_message(event):
+                if event.message.text == "ขั้นต่อไป":
+                    head1 = " STEP 2/3 : ต้มไตปลา "
+                    img1 = "https://i.imgur.com/14ymXEm.png"
+                    img2 = "https://i.imgur.com/iACemCP.png"
+                    txt1 = f"ต้มไตปลากับสมุนไพรเพิ่อดับกลิ่นคาว"
+                    txt2 = f"กรอง"
+                    line_bot_api.reply_message(event.reply_token, [
+                    TextSendMessage(text=head1),
+                    TextSendMessage(text=txt1),
+                    ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                    TextSendMessage(text=txt2),
+                    ImageSendMessage(original_content_url=img2, preview_image_url=img2),
+                    ])
+                else:
+                    pass
+                @handler.add(MessageEvent, message=(TextMessage))
+                def handle_text_message(event):
+                    if event.message.text == "ขั้นต่อไป":
+                        head1 = f" STEP  3/3 : ต้มเเกงไตปลา "
+                        img1 = "https://i.imgur.com/un5wOX1.png"
+                        img2 = "https://i.imgur.com/eLRvita.png"
+                        txt1 = f"ใส่มะเขือลงไปต้ม"
+                        txt2 = f"ตักใส่ชามเสิร์ฟ"
+                        
+                        line_bot_api.reply_message(event.reply_token, [
+                        TextSendMessage(text=head1),
+                        TextSendMessage(text=txt1),
+                        ImageSendMessage(original_content_url=img1, preview_image_url=img1),
+                        TextSendMessage(text=txt2),
+                        ImageSendMessage(original_content_url=img2, preview_image_url=img2)          
+                        ])
+                    else:
+                        pass
+                    
+                    @handler.add(MessageEvent, message=(TextMessage))
+                    def handle_text_message(event): 
+                        if event.message.text == "ขั้นต่อไป":
+                            txt = "ไม่มีขั้นต่อไปเเล้วครับ" 
+                            line_bot_api.reply_message(event.reply_token, [
+                                TextSendMessage(text=txt)])
        
              
 
